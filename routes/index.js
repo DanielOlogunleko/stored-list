@@ -12,7 +12,7 @@ router.get('/', async function(req, res, next) {
     console.log(items);
 
     res.render('index', {
-      title: 'Stored List',
+      title: 'Positive Vibes for the Day',
       items: items
     });
 
