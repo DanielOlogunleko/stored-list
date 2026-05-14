@@ -38,16 +38,31 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URL, { 
-    dbName: 'your_database' // Update this to your name of your database
- })
-    .then(function() {
-        console.log('Connected to MongoDB!');
-    })
-    .catch(function(error) {
-        console.log('Error connecting to MongoDB.');
-    })
+const mongoUrl = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017';
+const mongoDbName = process.env.MONGODB_DB || 'stored_list';
 
+mongoose.connect(mongoUrl, {
+  dbName: mongoDbName,
+})
+  .then(async function() {
+    console.log('Connected to MongoDB!');
+
+    const Items = require('./models/items');
+    const count = await Items.countDocuments();
+
+    if (count === 0) {
+      await Items.insertMany([
+        { text: 'Write one thing you are grateful for today.' },
+        { text: 'Take a deep breath and keep moving forward.' },
+        { text: 'Do one small thing that makes your day better.' },
+        { text: 'Remember that progress is better than perfection.' },
+        { text: 'Share a smile with someone who needs it.' },
+      ]);
+      console.log('Seeded default stored list items.');
+    }
+  })
+  .catch(function(error) {
+    console.error('Error connecting to MongoDB.', error);
+  });
 
 module.exports = app;

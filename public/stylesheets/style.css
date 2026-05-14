@@ -1,8 +1,134 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-a {
-  color: #00B7FF;
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b,
+    #312e81
+  );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  max-width: 750px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  border-radius: 28px;
+
+  padding: 45px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.4);
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 12px;
+
+  background: linear-gradient(
+    to right,
+    #60a5fa,
+    #c084fc
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: 700;
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(255,255,255,0.7);
+
+  margin-bottom: 35px;
+
+  font-size: 1rem;
+}
+
+.stored-list {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stored-list li {
+  background: rgba(255,255,255,0.08);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  padding: 20px 24px;
+
+  border-radius: 18px;
+
+  font-size: 1.05rem;
+
+  transition: all 0.3s ease;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.stored-list li::before {
+  content: '';
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 5px;
+  height: 100%;
+
+  background: linear-gradient(
+    to bottom,
+    #60a5fa,
+    #c084fc
+  );
+}
+
+.stored-list li:hover {
+  transform: translateY(-4px);
+
+  background: rgba(255,255,255,0.14);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 28px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
 }

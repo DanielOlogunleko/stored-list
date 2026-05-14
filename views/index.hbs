@@ -1,7 +1,15 @@
-<h1>Express</h1>
-<ul>
-{{#each list}}
-<li>{{this}}</li>
-{{/each}}
-</ul>
+<div class="container">
 
+  <h1>{{title}}</h1>
+
+  <ul class="stored-list">
+
+    {{#each items}}
+
+      <li>{{this.text}}</li>
+
+    {{/each}}
+
+  </ul>
+
+</div>
